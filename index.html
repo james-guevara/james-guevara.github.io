@@ -3,7 +3,7 @@
 <head>
 <link rel="Stylesheet" type="text/css" href="style.css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-<title>website</title>
+<title>index</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -19,52 +19,54 @@ I'm a bioinformatician working on understanding the genetics of psychiatric and 
 <a href="https://www.linkedin.com/in/james-guevara">LinkedIn Profile</a>
 </p>
 
-<div id="James Guevara-Questions I have"><h2 id="Questions I have" class="header"><a href="#James Guevara-Questions I have">Questions I have</a></h2></div>
+<div id="James Guevara-Projects"><h2 id="Projects" class="header"><a href="#James Guevara-Projects">Projects</a></h2></div>
+<p>
+Some projects I've worked on with brief, hopefully digestible explanations:
+</p>
+
+<p>
+A research paper I worked on involved determining how different genetic factors (common variants and rare variants) associate with different phenotype measures we collect from families with autism. The motivation is that we know autism is a heterogeneous trait (and as an aside, it's hard for me to think of traits more heterogenous that this one), and it's prima facie plausible that different phenotypes linked to autism (e.g. social communication, motor coordination, and education) are associated with different genetic factors. In the datasets we analyzed, we found that motor coordination in particular is associated solely with rare variants, whereas measures of social communication were associated with both common variants (as represented by the autism polygenic score) and rare variants (i.e. LOF and missense variants in highly constrained genes). We also determined to what degree ("variance explained" or accounted for) different genetic factors accounted for autism case status. We also provided more evidence for the "female protective effect", i.e. we find that females with autism have larger genetic burden (both rare and common variants) than males. And as expected, we find that cases with higher rare variant burden have a lower common variant burden (i.e. there's negative correlation between rare variant burden and polygenic risk), indicative of the liability threshold model that presumably underlies the genetics of autism. Finally, we found that rare variants (the "ASD susceptibility genes") were preferentially expressed during fetal development compared to "GWAS genes" (the 114 genes implicated by GWAS for autism). This project culminated in the paper:
+A phenotypic spectrum of autism is attributable to the combined effects of rare variants, polygenic risk and sex
+Nature Genetics · Jun 1, 2022
+</p>
+
+<p>
+For the previous paper, we developed a novel method for detecting de novo mutations from VCF (variant call format) files. The motivation here is that first of all, there are many false positive putative de novos in the VCF files (thousands of putative de novo SNVs per sample, whereas we expect on average 60 to 70 real de novo SNVs per sample). To deal with this, we make use of private variants in a family. Basically, in a VCF that contains thousands of families, there exist variants found in only one family (e.g. a parent and offspring). We expect these private variants to be of high-quality based on the chances of them occurring in a single family. We then "swap" the parents of the children in these families such that the private variants now look like de novo mutations. Again, we expect the features in the VCF for these "de novo" variants to be of high quality, so then we use these "synthetic" DNMs as our positive training data. We use a random sample of putative DNMs from the original VCF as our negative training data. When we train our model like so and use the model for classifying all the putative DNMs in the original VCF, we observe empirically (after using filtering heuristics such as a rare variant filter based on 1000 Genomes and gnomAD data and filtering out problematic regions enriched in segdups and simple repats) that our classifier is competitive (slightly better in terms of ROC) than other DNM classifiers. This project culminated in this paper:
+Customized de novo mutation detection for any variant calling pipeline: SynthDNM
+Bioinformatics · Apr 1, 2021
+</p>
+
+<p>
+Since 2018, I've worked on a long read sequencing project that consisted of sequencing hundreds of samples (famliies with autism) with the end going being to detect structural variants that may have been unable to be detected with short read sequencing technology. Over the course of this project, we used both of the major long read sequencing technologies, ONT data and PacBio data (starting with ONT early on and switching to PacBio later), and so I gained considerable experience working with both types of data. In particular, I helped develop SV genotyping software (primarily developed by a research scientist in the lab, Milad Mortazavi) and developed a pipeline in Nextflow that ran: alignment (minimap2), phasing/haplotagging (using Whatshap), variant calling (using an assortment of callers initially, though ultimately we ended just using Sniffles2), and finally running our custom genotyping tool (for SVs and tandem repeats). The large amount of heterogeneity of the data (ONT and PacBio, and PacBio itself consisted of types of data) caused problems, and I do have some critical things about Nextflow, but ultimately it was worthwhile.  
+Here's a more detailed description of the project, and the final paper should be published within a few months.
+</p>
+
+<p>
+As of now, I'm an analyst for a project called Genes 2 Mental Health (G2MH). For this project, we collect samples with recurrent CNVs in the 16p11.2 and 22q11.2 regions and a broad array of neurocognitive measures. The ultimate goal (as usual) is to associate these CNVs with these neurocognitive measures (including data from wearable devices), and more specifically, to determine whether the CNV effects can be expressed as a kind of phenotype spectrum (as of now, can be thought of as a weighted combination of phenotypes that can predict the type of CNV for a sample). To this end, we are using machine learning algorithms that perform dimensionality reduction, LDA and PCA, to discover and interpret these weighted combination of phenotypes. We are also trying out nonlinear methods (e.g. autoencoders) which could conceivably find some clusters in the data that linear methods wouldn't be able to find (though of course nonlinear methods require more effort for interpretation). Also, as part of this project, I wrote a custom CNV caller that looks at coverage in these recurrent regions and which happens to more accurately call the CNVs and determine the breakpoints of the CNVs in these regions (compared to standard SV callers). 
+</p>
+
+<p>
+Finally, I'm working on a project that clusters genes in the Simons Searchlight dataset based on the phenotype data.
+</p>
+
+<p>
+Other than that, I've played a minor role in another other projects including...
+</p>
 <ul>
 <li>
-When will AGI arrive?
+Using long reads to assemble SVs (duplications and a complex SV) in the genomic region containing SMYD3. The process for assembling the duplications was straightforward, though I learned of the limitations of even long reads for phasing variants. In regions with not enough variants, reads belonging to the same haplotype may not be "linked" together and therefore we would be unable to say with enough certainty that these separated reads do in fact belong to the same haplotype.
 
 <li>
-Is AGI a useful enough term?
 
-<li>
-Will aging be practically solved?
-
-</ul>
-<div id="James Guevara-Some things about me"><h2 id="Some things about me" class="header"><a href="#James Guevara-Some things about me">Some things about me</a></h2></div>
-<ul>
-<li>
-Primarily interested in AI and biology. 
-
-<li>
-Interested in everything else but I have to prioritize (until we solve aging... with AGI?) 
-
-</ul>
-<div id="James Guevara-Some things I believe"><h2 id="Some things I believe" class="header"><a href="#James Guevara-Some things I believe">Some things I believe</a></h2></div>
-<ul>
-<li>
-The efficient market hypothesis. 
-
-<li>
-AI will lead to rapid second industrial revolution (bad in the short-term bad, good in the medium-term, and in the long-term... who knows.)
-
-</ul>
-<div id="James Guevara-Research Projects"><h2 id="Research Projects" class="header"><a href="#James Guevara-Research Projects">Research Projects</a></h2></div>
-<ul>
-<li>
-Project One: [Brief description]
-
-<li>
-Project Two: [Brief description]
-
-<li>
-Project Three: [Brief description]
 
 </ul>
 <div id="James Guevara-Ramblings"><h2 id="Ramblings" class="header"><a href="#James Guevara-Ramblings">Ramblings</a></h2></div>
 <ul>
 <li>
 <a href="ramblings/on_metaethics.html">On metaethics</a>
+
+<li>
+On epistasis
 
 <li>
 Reflections on research and innovation
