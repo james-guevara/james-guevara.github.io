@@ -12,11 +12,13 @@
 <div id="James Guevara"><h1 id="James Guevara" class="header"><a href="#James Guevara">James Guevara</a></h1></div>
 
 <p>
-I'm a bioinformatician working on understanding the genetics of psychiatric and developmental disorders, primarily autism.
+I'm a bioinformatics scientist and research software engineer with 7+ years of experience building tools and pipelines for large-scale genomic analysis in autism and psychiatric genetics research. I'm currently at UC San Diego in the <a href="https://sebatlab.org/">Sebat Lab</a>, where I develop custom variant callers, Nextflow workflows, and analysis pipelines deployed across major biobanks and consortia.
 </p>
 
 <p>
-<a href="https://www.linkedin.com/in/james-guevara">LinkedIn Profile</a>
+<a href="https://www.linkedin.com/in/james-guevara">LinkedIn</a> |
+<a href="https://github.com/james-guevara">GitHub</a> |
+guevara.james@gmail.com
 </p>
 
 <div id="James Guevara-Projects"><h2 id="Projects" class="header"><a href="#James Guevara-Projects">Projects</a></h2></div>
@@ -37,29 +39,60 @@ Bioinformatics · Apr 1, 2021
 </p>
 
 <p>
-Since 2018, I've worked on a long read sequencing project that consisted of sequencing hundreds of samples (famliies with autism) with the end going being to detect structural variants that may have been unable to be detected with short read sequencing technology. Over the course of this project, we used both of the major long read sequencing technologies, ONT data and PacBio data (starting with ONT early on and switching to PacBio later), and so I gained considerable experience working with both types of data. In particular, I helped develop SV genotyping software (primarily developed by a research scientist in the lab, Milad Mortazavi) and developed a pipeline in Nextflow that ran: alignment (minimap2), phasing/haplotagging (using Whatshap), variant calling (using an assortment of callers initially, though ultimately we ended just using Sniffles2), and finally running our custom genotyping tool (for SVs and tandem repeats). The large amount of heterogeneity of the data (ONT and PacBio, and PacBio itself consisted of types of data) caused problems, and I do have some critical things about Nextflow, but ultimately it was worthwhile.  
-Here's a more detailed description of the project, and the final paper should be published within a few months.
+Since 2018, I've worked on a long read sequencing project that consisted of sequencing hundreds of samples (families with autism) with the end goal being to detect structural variants that may have been unable to be detected with short read sequencing technology. Over the course of this project, we used both of the major long read sequencing technologies, ONT data and PacBio data (starting with ONT early on and switching to PacBio later), and so I gained considerable experience working with both types of data. In particular, I helped develop SV genotyping software (primarily developed by a research scientist in the lab, Milad Mortazavi) and developed a pipeline in Nextflow that ran: alignment (minimap2), phasing/haplotagging (using Whatshap), variant calling (using an assortment of callers initially, though ultimately we ended just using Sniffles2), and finally running our custom genotyping tool (for SVs and tandem repeats). Long-read data and our custom analysis improved gene-disrupting SV detection by ~30% and tandem repeat discovery by ~40% over short reads. This project culminated in the paper:
+<br><br>
+<b>Long-Read Genome Sequencing Improves Detection and Functional Interpretation of Structural and Repeat Variants in Autism</b>
+<br>
+Mortazavi, M., <b>Guevara, J.</b>, Diaz, J., et al.
+<br>
+<i>Cell Genomics</i> (accepted, 2026)
 </p>
 
 <p>
-As of now, I'm an analyst for a project called Genes 2 Mental Health (G2MH). For this project, we collect samples with recurrent CNVs in the 16p11.2 and 22q11.2 regions and a broad array of neurocognitive measures. The ultimate goal (as usual) is to associate these CNVs with these neurocognitive measures (including data from wearable devices), and more specifically, to determine whether the CNV effects can be expressed as a kind of phenotype spectrum (as of now, can be thought of as a weighted combination of phenotypes that can predict the type of CNV for a sample). To this end, we are using machine learning algorithms that perform dimensionality reduction, LDA and PCA, to discover and interpret these weighted combination of phenotypes. We are also trying out nonlinear methods (e.g. autoencoders) which could conceivably find some clusters in the data that linear methods wouldn't be able to find (though of course nonlinear methods require more effort for interpretation). Also, as part of this project, I wrote a custom CNV caller that looks at coverage in these recurrent regions and which happens to more accurately call the CNVs and determine the breakpoints of the CNVs in these regions (compared to standard SV callers). 
+I'm an analyst for a project called Genes 2 Mental Health (G2MH). For this project, we collect samples with recurrent CNVs in the 16p11.2 and 22q11.2 regions and a broad array of neurocognitive measures. The ultimate goal is to associate these CNVs with these neurocognitive measures (including data from wearable devices), and more specifically, to determine whether the CNV effects can be expressed as a kind of phenotype spectrum (a weighted combination of phenotypes that can predict the type of CNV for a sample). To this end, we are using machine learning algorithms that perform dimensionality reduction, LDA and PCA, to discover and interpret these weighted combination of phenotypes. We are also trying out nonlinear methods (e.g. autoencoders) which could conceivably find some clusters in the data that linear methods wouldn't be able to find (though of course nonlinear methods require more effort for interpretation). Also, as part of this project, I wrote a custom CNV caller that looks at coverage in these recurrent regions and which happens to more accurately call the CNVs and determine the breakpoints of the CNVs in these regions (compared to standard SV callers). Related work was published in:
+<br><br>
+<b>Neurocognitive profiles of 22q11.2 and 16p11.2 deletions and duplications</b>
+<br>
+Gur, R.C., Bearden, C.E., Jacquemont, S., ... <b>Guevara, J.</b>, et al.
+<br>
+<i>Molecular Psychiatry</i> (2024)
 </p>
 
 <p>
-Finally, I'm working on a project that clusters genes in the Simons Searchlight dataset based on the phenotype data.
+I'm also working on a project that clusters genes in the Simons Searchlight dataset based on the phenotype data, linking LDA components to GO pathways (e.g., Glutamatergic Synapse, Axon).
 </p>
 
 <p>
-Other than that, I've played a minor role in another other projects including...
+<b>Autism Data Science Initiative (ADSI)</b>: I'm currently developing portable Nextflow workflows for ADSI, targeting 1M+ samples across 7 major cohorts including UK Biobank, All of Us, SFARI, ABCD, MoBa, Regeneron, and G2MH. The workflows include rare variant annotation pipelines outputting Parquet tables for efficient querying with Polars/DuckDB, plus a cross-cohort PGS/ancestry pipeline. I'm also building reproducible downstream analyses in Quarto notebooks.
+</p>
+
+<p>
+Other than that, I've played a minor role in other projects including...
 </p>
 <ul>
 <li>
-Using long reads to assemble SVs (duplications and a complex SV) in the genomic region containing SMYD3. The process for assembling the duplications was straightforward, though I learned of the limitations of even long reads for phasing variants. In regions with not enough variants, reads belonging to the same haplotype may not be "linked" together and therefore we would be unable to say with enough certainty that these separated reads do in fact belong to the same haplotype.
-
-<li>
-
-
+Using long reads to assemble SVs (duplications and a complex SV) in the genomic region containing SMYD3 as part of the Psychiatric Genomics Consortium (PGC) cross-disorder CNV analysis. The process for assembling the duplications was straightforward, though I learned of the limitations of even long reads for phasing variants. In regions with not enough variants, reads belonging to the same haplotype may not be "linked" together and therefore we would be unable to say with enough certainty that these separated reads do in fact belong to the same haplotype. I characterized conditions affecting haplotype resolution to help guide SV analysis protocols for the consortium. This work is part of a manuscript currently submitted to <i>Nature</i>.
+</li>
 </ul>
+
+<div id="James Guevara-Publications"><h2 id="Publications" class="header"><a href="#James Guevara-Publications">Publications</a></h2></div>
+
+<p><b>Published</b></p>
+<ul>
+<li>Gur, R.C., Bearden, C.E., Jacquemont, S., ... <b>Guevara, J.</b>, et al. Neurocognitive profiles of 22q11.2 and 16p11.2 deletions and duplications. <i>Molecular Psychiatry</i> (2024).</li>
+<li>Antaki, D.*, <b>Guevara, J.*</b> (co-first), Maihofer, A.X., et al. A phenotypic spectrum of autism is attributable to the combined effects of rare variants, polygenic risk and sex. <i>Nature Genetics</i> 54, 1284–1292 (2022).</li>
+<li>Kimura, H., Nakatochi, M., Aleksic, B., <b>Guevara, J.</b>, et al. Exome sequencing analysis of Japanese autism spectrum disorder case-control sample supports an increased burden of synaptic function-related genes. <i>Translational Psychiatry</i> 12, 265 (2022).</li>
+<li>Lian, A., <b>Guevara, J.</b>, Xia, K., Sebat, J. Customized de novo mutation detection for any variant calling pipeline: SynthDNM. <i>Bioinformatics</i> 37(20):3640-3641 (2021).</li>
+<li>Dubbs, A., <b>Guevara, J.</b>, Yuste, R. moco: Fast Motion Correction for Calcium Imaging. <i>Frontiers in Neuroinformatics</i> (2016). (~234 citations)</li>
+</ul>
+
+<p><b>Accepted / Submitted</b></p>
+<ul>
+<li>Mortazavi, M., <b>Guevara, J.</b>, Diaz, J., et al. Long-Read Genome Sequencing Improves Detection and Functional Interpretation of Structural and Repeat Variants in Autism. <i>Cell Genomics</i> (accepted, 2026).</li>
+<li>PGC Consortium (incl. <b>Guevara, J.</b>). A cross-disorder analysis of CNVs finds novel loci and dose-dependent relationships of genes to psychiatric traits. <i>Nature</i> (submitted).</li>
+<li>PGC Consortium (incl. <b>Guevara, J.</b>). Psychiatric disorders converge on common pathways but diverge in cellular context, spatial distribution, and directionality of genetic effects. <i>Nature</i> (submitted).</li>
+</ul>
+
 <div id="James Guevara-Ramblings"><h2 id="Ramblings" class="header"><a href="#James Guevara-Ramblings">Ramblings</a></h2></div>
 <ul>
 <li>
